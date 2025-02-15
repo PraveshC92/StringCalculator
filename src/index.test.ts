@@ -25,3 +25,11 @@ test("Case6- Should return an error due to Negative Number -> input: `//;\n1;-2`
     sum("//;\n1;-2");
   }).toThrow("negative numbers not allowed -2");
 });
+
+test("Case7- Should return an error due to multiple negative numbers -> input: `//;\n1;-2;-3`", () => {
+  expect(() => {
+    sum("//;\n1;-2;-3");
+  }).toThrow(
+    "negative numbers not allowed, multiple negative numbers found -2,-3"
+  );
+});

@@ -4,6 +4,8 @@ function add(string: String) {
     if (string) {
       let strArr = normalizeString(string).split(",");
 
+      //throwing in case of multiple negatives
+      checkMultipleNegatives(strArr);
       strArr.map((elem) => {
         if (elem && elem !== "") {
           if (Number(elem) >= 0) {
@@ -18,11 +20,25 @@ function add(string: String) {
   } catch (err: any) {
     console.log(err.message);
     throw err;
-    // throw new Error(err.message);
   }
 }
 
 function normalizeString(string: String) {
   return string.replace(/\s+|[;,\/]/g, ",");
+}
+
+function checkMultipleNegatives(arr: String[]) {
+  let newArr = arr.filter((elem) => {
+    if (Number(elem) < 0) {
+      return elem;
+    }
+  });
+  if (newArr.length > 1) {
+    throw new Error(
+      `negative numbers not allowed, multiple negative numbers found ${newArr.join(
+        ","
+      )}`
+    );
+  }
 }
 module.exports = add;
