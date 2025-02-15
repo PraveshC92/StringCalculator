@@ -8,7 +8,7 @@ function add(string: String) {
       checkMultipleNegatives(strArr);
       strArr.map((elem) => {
         if (elem && elem !== "") {
-          if (Number(elem) >= 0) {
+          if (Number(elem) >= 0 && Number(elem) <= 1000) {
             sum += Number(elem);
           } else if (Number(elem) < 0) {
             throw new Error(`negative numbers not allowed ${elem}`);

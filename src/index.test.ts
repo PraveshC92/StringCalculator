@@ -33,3 +33,7 @@ test("Case7- Should return an error due to multiple negative numbers -> input: `
     "negative numbers not allowed, multiple negative numbers found -2,-3"
   );
 });
+
+test("Case8 -> Number bigger than 1000 should be ignored  input: `2,1001`", () => {
+  expect(sum("2,1001")).toEqual(2);
+});
